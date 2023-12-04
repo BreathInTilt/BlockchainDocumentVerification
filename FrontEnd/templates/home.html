@@ -1,0 +1,22 @@
+<!-- home.html -->
+<h1>Welcome to the Home Page</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload file</button>
+</form>
+
+
+<table>
+    <tr>
+        <td>File Hash: </td>
+        <td>Uploaded on: </td>
+    </tr>
+{% for document in documents %}
+    <tr>
+        <td> {{ document.file_hash }} </td>
+        <td>{{ document.created_at }} </td>
+    </tr>
+{% endfor %}
+</table>
+
